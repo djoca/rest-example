@@ -12,11 +12,15 @@ Git 2.11 or better
 
 ## Quick start
 
-Clone this project using the command bellow:
+1) Clone this project using the command bellow:
 
 `git clone https://github.com/djoca/rest-example.git`
 
-Start the server with maven:
+2) Enter the project directory you just created with git clone:
+
+`cd rest-example`
+
+3) Start the server with maven:
 
 `mvn spring-boot:run`
 
