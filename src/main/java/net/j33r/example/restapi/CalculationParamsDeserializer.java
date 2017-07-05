@@ -12,8 +12,17 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * Classe responsavel por desserializar uma instancia de
+ * {@link CalculationParams} em uma string JSON.
+ *
+ * @author Jose Antonio
+ */
 public class CalculationParamsDeserializer extends JsonDeserializer<CalculationParams> {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CalculationParams deserialize(final JsonParser jsonParser, final DeserializationContext context)
 			throws IOException, JsonProcessingException {
@@ -29,11 +38,33 @@ public class CalculationParamsDeserializer extends JsonDeserializer<CalculationP
 		return new CalculationParams(a, b);
 	}
 
+	/**
+	 * Recupera o no JSON raiz
+	 *
+	 * @param jsonParser
+	 *            um JsonParser
+	 * @return uma instancia de JsonNode do no raiz
+	 * @throws IOException
+	 *             caso ocorra algum problema durante a recuperacao
+	 */
 	private JsonNode getInitialNode(final JsonParser jsonParser) throws IOException {
 		final ObjectCodec objectCodec = jsonParser.getCodec();
 		return objectCodec.readTree(jsonParser);
 	}
 
+	/**
+	 * Valida o JSON, verificando se os parametros existem e contem valores
+	 * validos.
+	 * 
+	 * @param jsonParser
+	 *            um JsonParser
+	 * @param node
+	 *            um JsonNode
+	 * @param expectedParam
+	 *            o parametro esperado
+	 * @throws IOException
+	 *             caso ocorra algum problema durante a validacao
+	 */
 	private void validateJson(JsonParser jsonParser, JsonNode node, String expectedParam) throws IOException {
 		final JsonNode value = node.get(expectedParam);
 
