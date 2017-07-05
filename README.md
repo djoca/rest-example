@@ -6,9 +6,9 @@ This is a simple REST example that calculates the sum of two integer numbers.
 
 Java 1.8 or better
 
-Maven 3.5 or better
+Maven 3.3.9 or better
 
-Git 2.11 or better
+Git 2.0 or better
 
 ## Quick start
 
